@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #1e293b;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+/*  Header */
+
+header {
+    background-color: #0f172a;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+    header .logo {
+        font-size: 1.6rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        color: #22d3ee;
+    }
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+    nav a:hover {
+        color: #22d3ee;
+        transform: translateY(-2px);
+    }
+/*  Main Content 
+
+main {
+    flex: 1;
+    padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* Filter Panel */
+
+.filter-panel {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+    .filter-panel label {
+        font-weight: 600;
+        color: #334155;
+    }
+
+    .filter-panel select, .filter-panel input[type="text"], .filter-panel button {
+        padding: 0.6rem 1rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .filter-panel button {
+        background-color: #22d3ee;
+        color: #0f172a;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+        .filter-panel button:hover {
+            background-color: #0ea5e9;
+        }
+
+
+/*  Coin Table */
+
+.coin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+    .coin-table th, .coin-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .coin-table th {
+        background-color: #f1f5f9;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: #475569;
+    }
+
+    .coin-table tr:hover {
+        background-color: #f8fafc;
+    }
+
+footer {
+    background-color: #0f172a;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        margin-top: 0.5rem;
+    }
+
+    .filter-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .filter-panel select, .filter-panel input[type="text"], .filter-panel button {
+            width: 100%;
+        }
+}
+/*  Home Page Styles */
+
+.home-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+    .home-intro h1 {
+        font-size: 2.2rem;
+        color: #0f172a;
+        margin-bottom: 1rem;
+    }
+
+    .home-intro .brand {
+        color: #22d3ee;
+        font-weight: bold;
+    }
+
+    .home-intro p {
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        color: #475569;
+    }
+
+.exchange-section {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+    .exchange-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #0f172a;
+    }
+
+.exchange-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.exchange-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    width: 140px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .exchange-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    }
+
+    .exchange-card img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 0.5rem;
+    }
+
+    .exchange-card span {
+        display: block;
+        font-weight: 600;
+        color: #334155;
+    }
+
+.cta-section {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: #22d3ee;
+    color: #0f172a;
+    padding: 0.9rem 1.8rem;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+    .filter-btn:hover {
+        background-color: #0ea5e9;
+        transform: scale(1.05);
+    }
+
+    .filter-btn img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+    }
+
+.exchange-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: stretch; 
+}
+
+
+.exchange-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    width: 140px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .exchange-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    }
+
+    .exchange-card img {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        margin-bottom: 0.5rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #f8fafc; 
+        border-radius: 8px;
+        padding: 6px; 
+    }
+
+    .exchange-card span {
+        display: block;
+        font-weight: 600;
+        color: #334155;
+        font-size: 0.95rem;
+    }
+

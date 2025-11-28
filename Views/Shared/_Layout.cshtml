@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Coin Filter</title>
+
+    @* CSS LINKS *@
+    <link rel="stylesheet" href="~/css/home.css" />
+    <link rel="stylesheet" href="~/css/feedback.css" />
+    <link rel="stylesheet" href="~/css/filter.css" />
+
+    @* LOGO *@
+    <link rel="icon" type="image/png" href="~/images/btc.png" />
+
+</head>
+
+<body>
+    <header>
+        <span class="logo"> Coin Filter</span>
+        <nav>
+            <a href="/">Main</a>
+            <a href="/filter">Filter</a>
+            <a href="/contacts">Feedback</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    <footer>
+        &copy; @DateTime.Now.Year Coin Filter. All rights reserved.
+    </footer>
+   
+</body>
+</html>

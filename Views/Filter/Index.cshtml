@@ -1,0 +1,206 @@
+﻿@model CryptocoinsFilter.Models.Filter
+@{
+    ViewData["Title"] = "Coin Filter";
+}
+
+@* JS *@
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+        // look all  Cancel buttons
+        document.querySelectorAll(".cancel-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                // Находим контейнер биржи
+                const container = btn.closest(".exchange-select-card");
+
+                if (!container) return;
+
+                // Все radio внутри контейнера
+                const radios = container.querySelectorAll('input[type="radio"]');
+
+                // Снимаем галочки
+                radios.forEach(r => r.checked = false);
+
+                // Для каждого имени создаём hidden input, если ещё нет
+                const handledNames = new Set();
+                radios.forEach(r => {
+                    const name = r.name;
+                    if (!handledNames.has(name)) {
+                        handledNames.add(name);
+
+                        // Проверяем, есть ли уже hidden
+                        if (!container.querySelector(`input[type="hidden"][name="${name}"]`)) {
+                            const hidden = document.createElement("input");
+                            hidden.type = "hidden";
+                            hidden.name = name;
+                            hidden.value = ""; // передаст null на сервер
+                            container.appendChild(hidden);
+                        }
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<section class="filter-page">
+    <h1>🔍 Coin Filter</h1>
+    <p class="filter-desc">
+        Select the exchanges and market types (Spot / Futures) you want to include in your search.
+    </p>
+
+    <form id="filterForm" method="post" asp-controller="Filter" asp-action="Apply">
+        <div class="exchange-select-grid">
+            <div class="exchange-select-card">
+                <img src="~/images/binance.png" alt="Binance" />
+                <h3>Binance</h3>
+                <label><input type="radio" asp-for="BinanceSpot" value="true" /> Spot <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /> </label>
+                <label><input type="radio" asp-for="BinanceSpot" value="false" /> Spot <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="BinanceFutures" value="true" /> Futures <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="BinanceFutures" value="false" /> Futures <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <button type="button" class="cancel-btn" data-exchange="Binance">Cancel</button>
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/bybit.png" alt="Bybit" />
+                <h3>Bybit</h3>
+                <label><input type="radio" asp-for="BybitSpot" value="true" /> Spot <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="BybitSpot" value="false" /> Spot <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="BybitFutures" value="true" /> Futures <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="BybitFutures" value="false" /> Futures <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <button type="button" class="cancel-btn" data-exchange="Bybit">Cancel</button>
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/bitget.png" alt="Bitget" />
+                <h3>Bitget</h3>
+                <label><input type="radio" asp-for="BitgetSpot" value="true" /> Spot <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="BitgetSpot" value="false" /> Spot <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="BitgetFutures" value="true" /> Futures <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="BitgetFutures" value="false" /> Futures <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <button type="button" class="cancel-btn" data-exchange="Bitget">Cancel</button>
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/mexc.png" alt="MEXC" />
+                <h3>MEXC</h3>
+                <label><input type="radio" asp-for="MexcSpot" value="true" /> Spot <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="MexcSpot" value="false" /> Spot <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="MexcFutures" value="true" /> Futures <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="MexcFutures" value="false" /> Futures <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <button type="button" class="cancel-btn" data-exchange="MEXC">Cancel</button>
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/gate.png" alt="Gate.io" />
+                <h3>Gate</h3>
+                <label><input type="radio" asp-for="GateSpot" value="true" /> Spot <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="GateSpot" value="false" /> Spot <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="GateFutures" value="true" /> Futures <img src="~/images/icon(true).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <label><input type="radio" asp-for="GateFutures" value="false" /> Futures <img src="~/images/icon(false).png" style="width:16px; height:16px; vertical-align:middle;" /></label>
+                <button type="button" class="cancel-btn" data-exchange="Gate">Cancel</button>
+            </div>
+
+            @* Unsupported Exchanges (disabled) *@
+            <div class="exchange-select-card">
+                <img src="~/images/kucoin.png" alt="KuCoin" />
+                <h3>KuCoin <span style="color:red;">(Not Supported Yet)</span></h3>
+
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/bingx.png" alt="BingX" />
+                <h3>BingX <span style="color:red;">(Not Supported Yet)</span></h3>
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/lbank.png" alt="LBank" />
+                <h3>LBank <span style="color:red;">(Not Supported Yet)</span></h3>
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/htx.png" alt="HTX" />
+                <h3>HTX <span style="color:red;">(Not Supported Yet)</span></h3>
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/hyperliquid.png" alt="Hyperliquid" />
+                <h3>Hyperliquid <span style="color:red;">(Not Supported Yet)</span></h3>
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/okx.png" alt="OKX" />
+                <h3>OKX <span style="color:red;">(Not Supported Yet)</span></h3>
+            </div>
+
+            <div class="exchange-select-card">
+                <img src="~/images/bitmart.png" alt="BitMart" />
+                <h3>BitMart <span style="color:red;">(Not Supported Yet)</span></h3>
+            </div> 
+
+
+
+        <div class="filter-actions">
+            <button type="submit" class="filter-btn">
+                <img src="~/images/filter.png" alt="Filter" /> Filter Coins
+            </button>
+
+            <a href="/" class="secondary-btn">
+                <img src="~/images/home.png" alt="" /> Go to Main Page
+            </a>
+        </div>
+
+    </form>
+</section>
+
+<section id="filteredCoins" class="results-section">
+    <h2>Filtered Coins</h2>
+    <div id="coinResults">
+        
+        @if (ViewBag.Message != null)
+        {
+            <div style="
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background:rgba(0,0,0,0.5);
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            z-index:9999;">
+
+                <div style="font-size:2.5rem; font-weight:bold; color:#fff; margin-bottom:20px; text-align:center;">
+                    @ViewBag.Message
+                </div>
+
+                <div class="spinner-border text-warning" role="status" style="width:5rem; height:5rem;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+
+                <a href="/" class="secondary-btn">
+                    <img src="~/images/home.png" alt="" /> Go to Main Page
+                </a>
+            </div>
+        }
+        else 
+        {
+            @if (Model.FilteredCoins != null && Model.FilteredCoins.Count > 0)
+            {
+                <ul>
+                    @foreach (var coin in Model.FilteredCoins)
+                    {
+                        <li>@coin</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>No coins found for selected exchanges/markets.</p>
+            }
+        }
+    </div>
+</section>
+
+
+
+

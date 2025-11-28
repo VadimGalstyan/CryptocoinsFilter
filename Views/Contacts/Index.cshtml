@@ -1,0 +1,60 @@
+﻿@model CryptocoinsFilter.Models.Contacts
+@{
+    ViewData["Title"] = "Feedback";
+}
+
+<section class="feedback-page">
+    <h1>Send Us Your Feedback</h1>
+    <p class="feedback-intro">We would love to hear your thoughts and suggestions!</p>
+
+    <form method="post" asp-controller="Contacts" asp-action="Check" class="feedback-form">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input asp-for="Name" placeholder="Your first name" />
+            </div>
+            <span asp-validation-for="Name"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Surname"></label>
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input asp-for="Surname" placeholder="Your last name" />
+            </div>
+            <span asp-validation-for="Surname"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <input asp-for="Email" placeholder="Your email address" />
+            </div>
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Message"></label>
+            <div class="input-icon">
+                <i class="fa fa-comment"></i>
+                <textarea asp-for="Message" placeholder="Your message..." rows="5"></textarea>
+            </div>
+            <span asp-validation-for="Message"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Send Message</button>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="success-message">@TempData["SuccessMessage"]</div>
+
+            <script>
+                setTimeout(() => {
+                    window.location.href = '/'; // redirect to home after 5 seconds
+                }, 5000);
+            </script>
+        }
+    </form>
+</section>

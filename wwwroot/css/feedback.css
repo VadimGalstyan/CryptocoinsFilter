@@ -1,0 +1,97 @@
+
+/*    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////FEEDBACK PAGE///////////////////////////////////////////////////////////*/
+.feedback-page {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+    .feedback-page h1 {
+        font-size: 2rem;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+    }
+
+.feedback-intro {
+    font-size: 1rem;
+    color: #475569;
+    margin-bottom: 2rem;
+}
+
+.feedback-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.feedback-form label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #334155;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+    padding: 0.8rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.2s ease;
+}
+
+    .feedback-form input:focus,
+    .feedback-form textarea:focus {
+        border-color: #22d3ee;
+        outline: none;
+    }
+
+.feedback-form span {
+    color: #f87171; 
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+
+.btn-submit {
+    background-color: #22d3ee;
+    color: #0f172a;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+    .btn-submit:hover {
+        background-color: #0ea5e9;
+        transform: scale(1.05);
+    }
+
+@media (max-width: 768px) {
+    .feedback-page {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+
+/* Feedback Reditection style */
+.success-message {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #34d399;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+
